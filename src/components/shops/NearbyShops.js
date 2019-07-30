@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NearbyShop from "../shops/NearbyShop";
+import NearbyShop from "./NearbyShop";
 
 class NearbyShops extends Component {
     render() {

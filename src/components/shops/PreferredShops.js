@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PreferredShop from "../shops/PreferredShop";
+import PreferredShop from "./PreferredShop";
 
 class PreferredShops extends Component {
     render() {

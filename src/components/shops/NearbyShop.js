@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from "react-router-dom";
 
 function NearbyShop() {
     const randomNumber = Math.floor(Math.random() * 10 + 1);
@@ -9,8 +8,8 @@ function NearbyShop() {
             <img src={"https://picsum.photos/200?random=" + randomNumber} className="card-img-top" alt="..." />
             <div className="card-body text-center">
                 {/* <p className="card-text"></p> */}
-                <Link to="" className="btn btn-danger mr-3"><i className="far fa-thumbs-down"></i> Dislike</Link>
-                <Link to="" className="btn btn-success"><i className="far fa-thumbs-up"></i> Like</Link>
+                <button className="btn btn-danger mr-3"><i className="far fa-thumbs-down"></i> Dislike</button>
+                <button className="btn btn-success"><i className="far fa-thumbs-up"></i> Like</button>
             </div>
             <div className="card-footer">
                 <small className="text-muted">distrance: 8 miles</small>
