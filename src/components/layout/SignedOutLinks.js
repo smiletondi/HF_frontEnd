@@ -5,7 +5,7 @@ function SignedOutLinks() {
     return (
             <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div className="navbar-nav ml-auto">
-                    <NavLink to="" className="nav-item nav-link" href="#">Sign Up</NavLink>
+                    <NavLink to="/signup" className="nav-item nav-link" href="#">Sign Up</NavLink>
                     <NavLink to="/signin" className="nav-item nav-link text-success" href="#"><i className="fas fa-sign-in-alt"></i> Log in</NavLink>
                 </div>
             </div>

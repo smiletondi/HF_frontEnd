@@ -37,7 +37,6 @@ class SignIn extends Component {
                         id="password" 
                         placeholder="Password"
                         onChange={this.handleChange} />
-                    <small className="form-text text-muted">You only know your password (Your password is stored encrypted in our database).</small>
                 </div>
                 <input type="submit" value="Login" className="btn btn-primary" />
             </form>

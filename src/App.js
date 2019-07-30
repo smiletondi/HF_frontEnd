@@ -6,6 +6,7 @@ import Dashborad from "./components/dashboard/Dashboard";
 import NearbyShops from "./components/shops/NearbyShops";
 import PreferredShops from "./components/shops/PreferredShops";
 import SignIn from "./components/auth/SignIn";
+import SignUp from "./components/auth/SignUp";
 
 function App() {
   return (
@@ -16,9 +17,10 @@ function App() {
 
           <Switch>
             <Route exact path="/" component={Dashborad} />
-            <Route exact path="/nearbyshops" component={NearbyShops} />
-            <Route exact path="/preferredshops" component={PreferredShops} />
-            <Route exact path="/signin" component={SignIn} />
+            <Route path="/nearbyshops" component={NearbyShops} />
+            <Route path="/preferredshops" component={PreferredShops} />
+            <Route path="/signin" component={SignIn} />
+            <Route path="/signup" component={SignUp} />
           </Switch>
         </div>
       </div>
