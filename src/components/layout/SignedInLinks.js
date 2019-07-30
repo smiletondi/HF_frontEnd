@@ -7,7 +7,7 @@ function SignedInLinks() {
                 <div className="navbar-nav ml-auto">
                     <NavLink className="nav-item nav-link" href="#">Nearby Shops</NavLink>
                     <NavLink className="nav-item nav-link" href="#">My Preferred Shops</NavLink>
-                    <NavLink className="nav-item nav-link" href="#">Log Out</NavLink>
+                    <NavLink className="nav-item nav-link text-danger" href="#"><i class="fas fa-sign-out-alt"></i> Log Out</NavLink>
                 </div>
             </div>
     )
