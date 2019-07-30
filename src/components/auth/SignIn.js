@@ -5,9 +5,14 @@ class SignIn extends Component {
         email: "",
         password: ""
     }
+    
+    // componentDidMount(){
+    //     document.title="Sign In";
+    // }
 
     handleSubmit = (e) => {
-        console.log("Form submited");
+        e.preventDefault();
+        console.log("Sign in Form submited");
     }
 
     handleChange = e => {
@@ -19,6 +24,9 @@ class SignIn extends Component {
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
+                <h1>Sign In</h1>
+                <hr/>
+                
                 <div className="form-group">
                     <label htmlFor="email">Email address</label>
                     <input 

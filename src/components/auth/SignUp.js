@@ -8,7 +8,8 @@ class SignUp extends Component {
     }
 
     handleSubmit = (e) => {
-        console.log("Form submited");
+        e.preventDefault();
+        console.log("Sign in Form submited");
     }
 
     handleChange = e => {
@@ -20,6 +21,9 @@ class SignUp extends Component {
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
+                <h1>Sign Up</h1>
+                <hr/>
+                
                 <div className="form-group">
                     <label htmlFor="email">Email address</label>
                     <input 
