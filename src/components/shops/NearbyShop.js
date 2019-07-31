@@ -1,13 +1,18 @@
 import React from 'react';
+import { connect } from "react-redux";
+import { likeShop, dislikeShop } from "../../store/actions/shopActions";
 
-function NearbyShop({ shop: { name, distance } }) {
+function NearbyShop(props) {
+    // Destructuring name and distance
+    const { shop: { name, distance } } = props;
+
     const randomNumber = Math.floor(Math.random() * 10 + 1);
 
     const handleLike = () => {
-        console.log("i like ", name);
+        props.likeShop(props.shop);
     }
     const handleDisLike = () => {
-        console.log("i don't like ", name, ", ", distance, "miles is too far.");
+        props.dislikeShop(props.shop);
     }
 
     return (
@@ -25,4 +30,11 @@ function NearbyShop({ shop: { name, distance } }) {
     )
 }
 
-export default NearbyShop;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        likeShop: (shop) => dispatch(likeShop(shop)),
+        dislikeShop: (shop) => dispatch(dislikeShop(shop))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(NearbyShop);

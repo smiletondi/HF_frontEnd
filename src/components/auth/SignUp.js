@@ -1,4 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { connect } from "react-redux";
+
+import { signUp } from "../../store/actions/authActions";
 
 class SignUp extends Component {
     state = {
@@ -9,7 +12,7 @@ class SignUp extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log("Sign in Form submited");
+        this.props.signUp(this.state);
     }
 
     handleChange = e => {
@@ -22,34 +25,34 @@ class SignUp extends Component {
         return (
             <form onSubmit={this.handleSubmit}>
                 <h1>Sign Up</h1>
-                <hr/>
-                
+                <hr />
+
                 <div className="form-group">
                     <label htmlFor="email">Email address</label>
-                    <input 
-                        type="email" 
+                    <input
+                        type="email"
                         className="form-control"
-                        id="email" 
+                        id="email"
                         placeholder="Enter email"
                         onChange={this.handleChange} />
                     <small className="form-text text-muted">We'll never share your email with anyone else.</small>
                 </div>
                 <div className="form-group">
                     <label htmlFor="password">Password</label>
-                    <input 
-                        type="password" 
-                        className="form-control" 
-                        id="password" 
+                    <input
+                        type="password"
+                        className="form-control"
+                        id="password"
                         placeholder="Password"
                         onChange={this.handleChange} />
                     <small className="form-text text-muted">You only know your password (Your password is stored encrypted in our database).</small>
                 </div>
                 <div className="form-group">
                     <label htmlFor="confirmedPassword">Confirm Password</label>
-                    <input 
-                        type="password" 
-                        className="form-control" 
-                        id="confirmedPassword" 
+                    <input
+                        type="password"
+                        className="form-control"
+                        id="confirmedPassword"
                         placeholder="Confirm your Password"
                         onChange={this.handleChange} />
                 </div>
@@ -59,4 +62,8 @@ class SignUp extends Component {
     }
 }
 
-export default SignUp;
+const mapDispatchToProps = dispatch => ({
+    signUp: (signup) => dispatch(signUp(signup))
+})
+
+export default connect(null, mapDispatchToProps)(SignUp);

@@ -1,19 +1,18 @@
 import React, { Component } from 'react'
+import { connect } from "react-redux";
+
+import { signIn } from "../../store/actions/authActions";
 
 class SignIn extends Component {
     state = {
         email: "",
         password: ""
     }
-    
-    // componentDidMount(){
-    //     document.title="Sign In";
-    // }
 
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log("Sign in Form submited");
-    }
+        this.props.signIn(this.state);
+    };
 
     handleChange = e => {
         this.setState({
@@ -25,24 +24,24 @@ class SignIn extends Component {
         return (
             <form onSubmit={this.handleSubmit}>
                 <h1>Sign In</h1>
-                <hr/>
-                
+                <hr />
+
                 <div className="form-group">
                     <label htmlFor="email">Email address</label>
-                    <input 
-                        type="email" 
+                    <input
+                        type="email"
                         className="form-control"
-                        id="email" 
+                        id="email"
                         placeholder="Enter email"
                         onChange={this.handleChange} />
                     <small className="form-text text-muted">We'll never share your email with anyone else.</small>
                 </div>
                 <div className="form-group">
                     <label htmlFor="password">Password</label>
-                    <input 
-                        type="password" 
-                        className="form-control" 
-                        id="password" 
+                    <input
+                        type="password"
+                        className="form-control"
+                        id="password"
                         placeholder="Password"
                         onChange={this.handleChange} />
                 </div>
@@ -52,4 +51,8 @@ class SignIn extends Component {
     }
 }
 
-export default SignIn;
+const mapDispatchToProps = dispatch => ({
+    signIn: (login) => dispatch(signIn(login))
+});
+
+export default connect(null, mapDispatchToProps)(SignIn);
