@@ -9,6 +9,8 @@ import SignIn from "./components/auth/SignIn";
 import SignUp from "./components/auth/SignUp";
 
 function App() {
+  const user= sessionStorage.getItem("user");
+  console.log(user);
   return (
     <Router>
       <div className="App">

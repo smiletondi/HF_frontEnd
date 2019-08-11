@@ -2,11 +2,16 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 
 import NearbyShop from "./NearbyShop";
+import { getShops } from '../../store/actions/shopActions';
 
 
 
 class NearbyShops extends Component {
+    componentDidMount(){
+        this.props.dispatch(getShops);
+    }
     render() {
+
 
         const { shops } = this.props;
 
@@ -15,8 +20,8 @@ class NearbyShops extends Component {
                 <h1>This is the list of nearby shops:</h1>
                 <hr />
                 <div className="container">
-                    {shops && shops.map( shop => {
-                        return <NearbyShop key={shop.id} shop={shop} />
+                    {shops && shops.map(shop => {
+                        return <NearbyShop key={shop._id} shop={shop} />
                     })}
                 </div>
 

@@ -1,28 +1,31 @@
 const initState = {
-    shops: [
-        { id: 1, distance: 5, name: "Aswak Salam", imageUrl: "" },
-        { id: 2, distance: 4, name: "Boutique Golf Maroc", imageUrl: "" },
-        { id: 3, distance: 23, name: "Sophie Paris Maroc", imageUrl: "" },
-        { id: 4, distance: 125, name: "La Fabrique", imageUrl: "" },
-        { id: 5, distance: 45, name: "Celio", imageUrl: "" },
-        { id: 6, distance: 23, name: "Orchestra", imageUrl: "" },
-        { id: 7, distance: 42, name: "Inkasa", imageUrl: "" },
-        { id: 8, distance: 87, name: "Souk", imageUrl: "" },
-    ]
+    shops: [],
+    user: null
 };
 
 const shopReducer = (state = initState, action) => {
     switch (action.type) {
+        case "GET_SHOPS":
+            console.log("Getting the shops...");
+            return {
+                ...state,
+                shops: action.payload.shops
+            };
         case "LIKE_SHOP":
             console.log("i like ", action.payload.name);
-            break;
+            return state;
+        case "LIKE_SHOP_ERROR":
+            console.log("An eror occured when liking a shop /n", action.payload);
+            return state;
         case "DISLIKE_SHOP":
-            console.log("i don't like ", action.payload.name, ", ", action.payload.distance, "miles is too far.");
-            break;
+            console.log("i don't like ", action.payload.name, ", ", action.payload.distance, "miles is way too far.");
+            return state;
+        case "DISLIKE_SHOP_ERROR":
+            console.log("An eror occured when disliking a shop /n", action.payload);
+            return state;
         default:
-            // console.log("Default");
+            return state;
     }
-    return state;
 };
 
 export default shopReducer;
