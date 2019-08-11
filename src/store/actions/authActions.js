@@ -4,6 +4,7 @@ export const SIGN_IN_BEGIN = "SIGN_IN_BEGIN";
 export const SIGN_IN_SUCCESS = "SIGN_IN_SUCCES";
 export const SIGN_IN_ERROR = "SIGN_IN_ERROR";
 export const SIGN_OUT_SUCCESS = "SIGN_OUT_SUCCES";
+export const UPDATE_USER_STATE= "UPDATE_USER_STATE"
 
 export const signIn = payload => (dispatch, getState) => {
     // API call
@@ -37,5 +38,12 @@ export const signUp = payload => (dispatch, getState) => {
     return dispatch({
         type: "SIGN_UP",
         payload: payload
+    });
+};
+
+export const updateUserState= payload=> (dispatch, getState) =>{
+    return dispatch({
+        type: UPDATE_USER_STATE,
+        payload
     });
 }

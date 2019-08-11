@@ -8,9 +8,17 @@ import PreferredShops from "./components/shops/PreferredShops";
 import SignIn from "./components/auth/SignIn";
 import SignUp from "./components/auth/SignUp";
 
-function App() {
-  const user= sessionStorage.getItem("user");
-  console.log(user);
+import { connect } from "react-redux";
+
+import { updateUserState } from "./store/actions/authActions";
+
+function App(props) {
+  const userFromStorage = JSON.parse(sessionStorage.getItem("user"));
+  const { userFromState, updateUserState }= props;
+  if (!userFromState && userFromStorage){
+    updateUserState(userFromStorage)
+  }
+  // console.log(userFromState);
   return (
     <Router>
       <div className="App">
@@ -30,4 +38,12 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  userFromState: state.auth.user
+})
+
+const mapDispatchToProps = dispatch => ({
+  updateUserState: (data) => dispatch(updateUserState(data))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
