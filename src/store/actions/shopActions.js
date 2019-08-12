@@ -7,7 +7,8 @@ export const FETCH_NEARBY_SHOPS_ERROR = "FETCH_NEARBY_SHOPS_ERROR";
 export const FETCH_PREFERRED_SHOPS_BEGIN = "FETCH_PREFERRED_SHOPS_BEGIN";
 export const FETCH_PREFERRED_SHOPS_SUCCESS = "FETCH_PREFERRED_SHOPS_SUCCESS";
 export const FETCH_PREFERRED_SHOPS_ERROR = "FETCH_PREFERRED_SHOPS_ERROR";
-export const LIKE_SHOP = "LIKE_SHOP";
+export const LIKE_SHOP_SUCCESS = "LIKE_SHOP_SUCCESS";
+export const LIKE_SHOP_ERROR = "LIKE_SHOP_ERROR";
 export const DISLIKE_SHOP = "DISLIKE_SHOP";
 export const GET_SHOPS = "GET_SHOPS";
 
@@ -63,22 +64,27 @@ export const fetchPreferredShops = token => (dispatch, getState) => {
 }
 
 
-export const likeShop = shop => async (dispatch, getState) => {
+export const likeShop = (shop, token) => async (dispatch, getState) => {
     /*
         Make async call to post data to the api
     */
     await axios({
-        url: "http://localhost:3010/shops/" + shop.id + "/like",
+        url: "http://localhost:3010/shops/" + shop._id + "/like",
         method: "POST",
-        data: shop
-    })
-        .then(() => {
-            dispatch({
-                type: LIKE_SHOP,
-                payload: shop
-            });
-
-        }).catch(err => console.log(err));
+        headers: {
+            "Authorization": "Bearer " + token
+        }
+    }).then(() => {
+        dispatch({
+            type: LIKE_SHOP_SUCCESS,
+            payload: shop
+        });
+    }).catch(err => {
+        dispatch({
+            type: LIKE_SHOP_ERROR,
+            payload: err
+        });
+    });
 }
 
 export const dislikeShop = shop => (dispatch, getState) => {

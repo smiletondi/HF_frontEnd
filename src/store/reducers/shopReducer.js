@@ -1,7 +1,7 @@
 import {
     FETCH_NEARBY_SHOPS_BEGIN, FETCH_NEARBY_SHOPS_SUCCESS, FETCH_NEARBY_SHOPS_ERROR,
-    FETCH_PREFERRED_SHOPS_BEGIN, FETCH_PREFERRED_SHOPS_SUCCESS, FETCH_PREFERRED_SHOPS_ERROR
-
+    FETCH_PREFERRED_SHOPS_BEGIN, FETCH_PREFERRED_SHOPS_SUCCESS, FETCH_PREFERRED_SHOPS_ERROR,
+    LIKE_SHOP_SUCCESS, LIKE_SHOP_ERROR
 } from "../actions/shopActions";
 
 const initState = {
@@ -79,11 +79,11 @@ const shopReducer = (state = initState, action) => {
                     error: action.payload
                 }
             };
-        case "LIKE_SHOP":
+        case LIKE_SHOP_SUCCESS:
             console.log("i like ", action.payload.name);
             return state;
-        case "LIKE_SHOP_ERROR":
-            console.log("An eror occured when liking a shop /n", action.payload);
+        case LIKE_SHOP_ERROR:
+            console.log("An eror occured when liking a shop", action.payload);
             return state;
         case "DISLIKE_SHOP":
             console.log("i don't like ", action.payload.name, ", ", action.payload.distance, "miles is way too far.");
