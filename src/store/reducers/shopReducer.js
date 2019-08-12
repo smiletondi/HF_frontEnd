@@ -1,15 +1,83 @@
+import {
+    FETCH_NEARBY_SHOPS_BEGIN, FETCH_NEARBY_SHOPS_SUCCESS, FETCH_NEARBY_SHOPS_ERROR,
+    FETCH_PREFERRED_SHOPS_BEGIN, FETCH_PREFERRED_SHOPS_SUCCESS, FETCH_PREFERRED_SHOPS_ERROR
+
+} from "../actions/shopActions";
+
 const initState = {
-    shops: [],
-    user: null
+    nearbyShops: {
+        loading: false,
+        shops: [],
+        error: null
+    },
+    preferredShops: {
+        loading: false,
+        shops: [],
+        error: null
+    }
 };
 
 const shopReducer = (state = initState, action) => {
     switch (action.type) {
-        case "GET_SHOPS":
-            console.log("Getting the shops...");
+        case FETCH_NEARBY_SHOPS_BEGIN:
+            console.log(FETCH_NEARBY_SHOPS_BEGIN);
             return {
                 ...state,
-                shops: action.payload.shops
+                nearbyShops: {
+                    ...state.nearbyShops,
+                    shops: [],
+                    loading: true
+                }
+            };
+        case FETCH_NEARBY_SHOPS_SUCCESS:
+            console.log(FETCH_NEARBY_SHOPS_SUCCESS);
+            return {
+                ...state,
+                nearbyShops: {
+                    ...state.nearbyShops,
+                    shops: action.payload,
+                    loading: false
+                }
+            };
+        case FETCH_NEARBY_SHOPS_ERROR:
+            console.log(FETCH_NEARBY_SHOPS_ERROR);
+            return {
+                ...state,
+                nearbyShops: {
+                    ...state.nearbyShops,
+                    shops: [],
+                    error: action.payload
+                }
+            };
+        case FETCH_PREFERRED_SHOPS_BEGIN:
+            console.log(FETCH_PREFERRED_SHOPS_BEGIN);
+            return {
+                ...state,
+                preferredShops: {
+                    ...state.preferredShops,
+                    shops: [],
+                    loading: true
+                }
+            };
+        case FETCH_PREFERRED_SHOPS_SUCCESS:
+            console.log(FETCH_PREFERRED_SHOPS_SUCCESS);
+            return {
+                ...state,
+                preferredShops: {
+                    ...state.preferredShops,
+                    shops: action.payload,
+                    loading: false
+                }
+            };
+        case FETCH_PREFERRED_SHOPS_ERROR:
+            console.log(FETCH_PREFERRED_SHOPS_ERROR);
+            return {
+                ...state,
+                preferredShops: {
+                    ...state.preferredShops,
+                    shops: [],
+                    error: action.payload
+                }
             };
         case "LIKE_SHOP":
             console.log("i like ", action.payload.name);

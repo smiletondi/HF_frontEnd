@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 
 import NearbyShop from "./NearbyShop";
-import { getShops } from '../../store/actions/shopActions';
+import { fetchNearbyShops } from '../../store/actions/shopActions';
 
 
 
 class NearbyShops extends Component {
     componentDidMount(){
-        this.props.dispatch(getShops);
+        this.props.fetchNearbyShops(this.props.token);
     }
     render() {
 
@@ -31,7 +31,12 @@ class NearbyShops extends Component {
 }
 
 const mapStateToProps = state => ({
-    shops: state.shop.shops
+    shops: state.shop.nearbyShops.shops,
+    token: state.auth.user.token
 });
 
-export default connect(mapStateToProps)(NearbyShops);
+const mapDispatchToProps = (dispatch) => ({
+    fetchNearbyShops: (token) => dispatch(fetchNearbyShops(token))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(NearbyShops);
