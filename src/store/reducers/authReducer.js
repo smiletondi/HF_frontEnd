@@ -1,9 +1,18 @@
-import { SIGN_IN_BEGIN, SIGN_IN_SUCCESS, SIGN_IN_ERROR, SIGN_OUT_SUCCESS, UPDATE_USER_STATE } from "../actions/authActions";
+import {
+    SIGN_IN_BEGIN, SIGN_IN_SUCCESS, SIGN_IN_ERROR,
+    SIGN_OUT_SUCCESS, UPDATE_USER_STATE,
+    SIGN_UP_SUCCESS, SIGN_UP_ERROR
+
+} from "../actions/authActions";
 
 const initState = {
     loading: false,
     user: null,
-    error: null
+    error: null,
+    signUp: {
+        success: false,
+        error: null
+    }
 };
 
 const authReducer = (state = initState, action) => {
@@ -30,6 +39,25 @@ const authReducer = (state = initState, action) => {
                 user: null,
                 error: action.payload.message
             }
+        case SIGN_UP_SUCCESS:
+            console.log("Signup success");
+            sessionStorage.setItem("user", JSON.stringify(action.payload))
+            return {
+                ...state,
+                signUp: {
+                    success: true,
+                    error: false
+                }
+            };
+        case SIGN_UP_ERROR:
+            console.log("Signup Error");
+            return {
+                ...state,
+                signUp: {
+                    success: false,
+                    error: action.payload
+                }
+            };
         case SIGN_OUT_SUCCESS:
             console.log("SignOut success");
             sessionStorage.removeItem("user");

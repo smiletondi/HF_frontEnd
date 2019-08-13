@@ -1,12 +1,15 @@
 import axios from "axios";
+// import { his } from "react-router-dom";
 
 export const SIGN_IN_BEGIN = "SIGN_IN_BEGIN";
 export const SIGN_IN_SUCCESS = "SIGN_IN_SUCCES";
 export const SIGN_IN_ERROR = "SIGN_IN_ERROR";
+export const SIGN_UP_SUCCESS = "SIGN_UP_SUCCES";
+export const SIGN_UP_ERROR = "SIGN_UP_ERROR";
 export const SIGN_OUT_SUCCESS = "SIGN_OUT_SUCCES";
-export const UPDATE_USER_STATE= "UPDATE_USER_STATE"
+export const UPDATE_USER_STATE = "UPDATE_USER_STATE"
 
-export const signIn = payload => (dispatch, getState) => {
+export const signIn = (payload, History) => (dispatch, getState) => {
     // API call
     dispatch({
         type: SIGN_IN_BEGIN
@@ -15,11 +18,14 @@ export const signIn = payload => (dispatch, getState) => {
         url: ("http://localhost:3010/signin"),
         method: "POST",
         data: payload
-    }).then(({data}) => {
+    }).then(({ data }) => {
         dispatch({
             type: SIGN_IN_SUCCESS,
             payload: data
-        })
+        });
+
+        // Redirecting to /nearbyShops
+        History.push("/nearbyshops");
     }).catch(err => {
         dispatch({
             type: SIGN_IN_ERROR,
@@ -34,14 +40,28 @@ export const signOut = payload => (dispatch, getState) => {
     });
 }
 
-export const signUp = payload => (dispatch, getState) => {
-    return dispatch({
-        type: "SIGN_UP",
-        payload: payload
-    });
+export const signUp = (payload, History) => (dispatch, getState) => {
+    // API call
+    axios({
+        url: ("http://localhost:3010/signup"),
+        method: "POST",
+        data: payload
+    }).then(() => {
+        dispatch({
+            type: SIGN_UP_SUCCESS
+        });
+
+        // Redirecting to /signin
+        History.push("/signin");
+    }).catch(err => {
+        dispatch({
+            type: SIGN_UP_ERROR,
+            payload: err.response.data.data.msg
+        })
+    })
 };
 
-export const updateUserState= payload=> (dispatch, getState) =>{
+export const updateUserState = payload => (dispatch, getState) => {
     return dispatch({
         type: UPDATE_USER_STATE,
         payload

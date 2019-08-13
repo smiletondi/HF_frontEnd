@@ -7,12 +7,20 @@ class SignUp extends Component {
     state = {
         email: "",
         password: "",
-        confirmedPassword: ""
+        confirmedPassword: "",
+        error: null
     }
 
     handleSubmit = (e) => {
         e.preventDefault();
-        this.props.signUp(this.state);
+        this.setState({ error: null})
+        const { email, password, confirmedPassword } = this.state;
+
+        if (password !== confirmedPassword) {
+            return this.setState({ error: true })
+        }
+
+        this.props.signUp({ email, password }, this.props.history);
     }
 
     handleChange = e => {
@@ -57,13 +65,25 @@ class SignUp extends Component {
                         onChange={this.handleChange} />
                 </div>
                 <input type="submit" value="Sign Up" className="btn btn-primary" />
+                {
+                    (this.state.error) ? <div className="alert alert-danger text-center">
+                        Passwords don't match
+                </div> :
+                    (this.props.serverError) ? <div className="alert alert-danger text-center">
+                    {this.props.serverError}
+            </div> : null
+                }
             </form>
         )
     }
 }
 
 const mapDispatchToProps = dispatch => ({
-    signUp: (signup) => dispatch(signUp(signup))
-})
+    signUp: (newUser, aa) => dispatch(signUp(newUser, aa))
+});
 
-export default connect(null, mapDispatchToProps)(SignUp);
+const mapStateToProps = state => ({
+    serverError: state.auth.signUp.error
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

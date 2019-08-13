@@ -11,13 +11,14 @@ class SignIn extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        this.props.signIn(this.state);
+        this.props.signIn(this.state, this.props.history); // we passed the history property to redirect in the 
+        //                                                      signin() function
     };
 
     handleChange = e => {
         this.setState({
             [e.target.id]: e.target.value
-        })
+        });
     }
 
     render() {
@@ -60,7 +61,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    signIn: (login) => dispatch(signIn(login))
+    signIn: (login, a) => dispatch(signIn(login, a))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
