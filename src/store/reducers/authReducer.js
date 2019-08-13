@@ -24,7 +24,7 @@ const authReducer = (state = initState, action) => {
             }
         case SIGN_IN_SUCCESS:
             console.log("Login success");
-            sessionStorage.setItem("user", JSON.stringify(action.payload))
+            localStorage.setItem("user", JSON.stringify(action.payload))
             return {
                 ...state,
                 loading: false,
@@ -41,7 +41,6 @@ const authReducer = (state = initState, action) => {
             }
         case SIGN_UP_SUCCESS:
             console.log("Signup success");
-            sessionStorage.setItem("user", JSON.stringify(action.payload))
             return {
                 ...state,
                 signUp: {
@@ -60,7 +59,7 @@ const authReducer = (state = initState, action) => {
             };
         case SIGN_OUT_SUCCESS:
             console.log("SignOut success");
-            sessionStorage.removeItem("user");
+            localStorage.removeItem("user");
             return initState
         case UPDATE_USER_STATE:
             console.log("user state updated");
@@ -68,10 +67,6 @@ const authReducer = (state = initState, action) => {
                 ...state,
                 user: action.payload
             }
-        // case "SIGN_UP":
-        //     return {
-
-        //     }
         default:
             return state;
     }

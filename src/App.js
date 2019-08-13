@@ -13,7 +13,11 @@ import { connect } from "react-redux";
 import { updateUserState } from "./store/actions/authActions";
 
 function App(props) {
-  const userFromStorage = JSON.parse(sessionStorage.getItem("user"));
+  const itemFromStorage=localStorage.getItem("user");
+  let userFromStorage;
+  if (itemFromStorage)
+    userFromStorage = JSON.parse(itemFromStorage);
+
   const { userFromState, updateUserState }= props;
   if (!userFromState && userFromStorage){
     updateUserState(userFromStorage)
