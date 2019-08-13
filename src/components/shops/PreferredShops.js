@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 
 import PreferredShop from "./PreferredShop";
 import { fetchPreferredShops } from '../../store/actions/shopActions';
 
 class PreferredShops extends Component {
     componentDidMount() {
-        this.props.fetchPreferredShops(this.props.token);
+        if (this.props.user)
+            this.props.fetchPreferredShops(this.props.user.token);
     }
 
     render() {
+        if(!this.props.user) return <Redirect to="/signin" />
+
         const { shops } = this.props;
         return (
             <div>
@@ -28,7 +32,7 @@ class PreferredShops extends Component {
 
 const mapStateToProps = state => ({
     shops: state.shop.preferredShops.shops,
-    token: state.auth.user.token
+    user: state.auth.user,
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 
 import NearbyShop from "./NearbyShop";
 import { fetchNearbyShops } from '../../store/actions/shopActions';
@@ -8,10 +9,11 @@ import { fetchNearbyShops } from '../../store/actions/shopActions';
 
 class NearbyShops extends Component {
     componentDidMount(){
-        this.props.fetchNearbyShops(this.props.token);
+        if (this.props.user)
+            this.props.fetchNearbyShops(this.props.user.token);
     }
     render() {
-
+        if(!this.props.user) return <Redirect to="/signin" />
 
         const { shops } = this.props;
 
@@ -32,7 +34,7 @@ class NearbyShops extends Component {
 
 const mapStateToProps = state => ({
     shops: state.shop.nearbyShops.shops,
-    token: state.auth.user.token
+    user: state.auth.user
 });
 
 const mapDispatchToProps = (dispatch) => ({
