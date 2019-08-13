@@ -11,7 +11,9 @@ export const LIKE_SHOP_SUCCESS = "LIKE_SHOP_SUCCESS";
 export const LIKE_SHOP_ERROR = "LIKE_SHOP_ERROR";
 export const REMOVE_SHOP_SUCCESS = "REMOVE_SHOP_SUCCESS";
 export const REMOVE_SHOP_ERROR = "REMOVE_SHOP_ERROR";
-export const DISLIKE_SHOP = "DISLIKE_SHOP";
+export const DISLIKE_SHOP_SUCCESS = "DISLIKE_SHOP_SUCCESS";
+export const DISLIKE_SHOP_ERROR = "DISLIKE_SHOP_ERROR";
+export const DISLIKE_SHOP_END = "DISLIKE_SHOP_END";
 export const GET_SHOPS = "GET_SHOPS";
 
 // Action creators
@@ -111,22 +113,32 @@ export const removeShop = (shop, token) => async (dispatch, getState) => {
     });
 }
 
-export const dislikeShop = shop => (dispatch, getState) => {
+export const dislikeShop = (shop, token) => (dispatch, getState) => {
     /*
         Make async call to post data to the api
     */
-    axios.post(("http://localhost:3010/shops/" + shop.id + "/like"), shop)
-        .then(() => {
+    axios({
+        url: "http://localhost:3010/shops/" + shop._id + "/dislike",
+        method: "POST",
+        headers: {
+            "Authorization": "Bearer " + token
+        }
+    }).then(() => {
+        setTimeout(() => {
             dispatch({
-                type: DISLIKE_SHOP,
+                type: DISLIKE_SHOP_END,
                 payload: shop
             });
-
-        }).catch(err => {
-            dispatch({
-                type: "DISLIKE_SHOP_ERROR",
-                payload: err
-            });
-
+        }, 7200000);
+        dispatch({
+            type: DISLIKE_SHOP_SUCCESS,
+            payload: shop
         });
+
+    }).catch(err => {
+        dispatch({
+            type: DISLIKE_SHOP_ERROR,
+            payload: err.response.data
+        });
+    });
 }

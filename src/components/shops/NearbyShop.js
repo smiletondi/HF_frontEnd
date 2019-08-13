@@ -4,13 +4,13 @@ import { likeShop, dislikeShop } from "../../store/actions/shopActions";
 
 function NearbyShop(props) {
     // Destructuring name, distance and imageUrl
-    const { shop: { name, distance, imageUrl }, token } = props;
+    const { shop, shop: { name, distance, imageUrl }, token } = props;
 
     const handleLike = () => {
-        props.likeShop(props.shop, token);
+        props.likeShop(shop, token);
     }
     const handleDisLike = () => {
-        props.dislikeShop(props.shop);
+        props.dislikeShop(shop, token);
     }
 
     return (
@@ -35,7 +35,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = (dispatch) => {
     return {
         likeShop: (shop, token) => dispatch(likeShop(shop, token)),
-        dislikeShop: (shop) => dispatch(dislikeShop(shop))
+        dislikeShop: (shop, token) => dispatch(dislikeShop(shop, token))
     }
 }
 
