@@ -82,13 +82,27 @@ const shopReducer = (state = initState, action) => {
             };
         case LIKE_SHOP_SUCCESS:
             console.log("i like ", action.payload.name);
-            return state;
+            const remained_nearbyShops = state.nearbyShops.shops.filter(item => item !== action.payload);
+            return {
+                ...state,
+                nearbyShops: {
+                    ...state.nearbyShops,
+                    shops: remained_nearbyShops
+                }
+            };
         case LIKE_SHOP_ERROR:
             console.log("An eror occured when liking a shop", action.payload);
             return state;
         case REMOVE_SHOP_SUCCESS:
             console.log("i REMOVED ", action.payload.name);
-            return state;
+            const remained_preferredShops = state.preferredShops.shops.filter(item => item !== action.payload);
+            return {
+                ...state,
+                preferredShops: {
+                    ...state.preferredShops,
+                    shops: remained_preferredShops
+                }
+            };
         case REMOVE_SHOP_ERROR:
             console.log("An eror occured when liking a shop", action.payload);
             return state;
