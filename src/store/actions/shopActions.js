@@ -9,6 +9,8 @@ export const FETCH_PREFERRED_SHOPS_SUCCESS = "FETCH_PREFERRED_SHOPS_SUCCESS";
 export const FETCH_PREFERRED_SHOPS_ERROR = "FETCH_PREFERRED_SHOPS_ERROR";
 export const LIKE_SHOP_SUCCESS = "LIKE_SHOP_SUCCESS";
 export const LIKE_SHOP_ERROR = "LIKE_SHOP_ERROR";
+export const REMOVE_SHOP_SUCCESS = "REMOVE_SHOP_SUCCESS";
+export const REMOVE_SHOP_ERROR = "REMOVE_SHOP_ERROR";
 export const DISLIKE_SHOP = "DISLIKE_SHOP";
 export const GET_SHOPS = "GET_SHOPS";
 
@@ -82,6 +84,28 @@ export const likeShop = (shop, token) => async (dispatch, getState) => {
     }).catch(err => {
         dispatch({
             type: LIKE_SHOP_ERROR,
+            payload: err
+        });
+    });
+}
+export const removeShop = (shop, token) => async (dispatch, getState) => {
+    /*
+        Make async call to post data to the api
+    */
+    await axios({
+        url: "http://localhost:3010/shops/" + shop._id + "/remove",
+        method: "POST",
+        headers: {
+            "Authorization": "Bearer " + token
+        }
+    }).then(() => {
+        dispatch({
+            type: REMOVE_SHOP_SUCCESS,
+            payload: shop
+        });
+    }).catch(err => {
+        dispatch({
+            type: REMOVE_SHOP_ERROR,
             payload: err
         });
     });
