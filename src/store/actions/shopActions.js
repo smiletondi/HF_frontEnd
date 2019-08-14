@@ -1,4 +1,4 @@
-import axios from "axios";
+import API from "../../api";
 
 // Action Names
 export const FETCH_NEARBY_SHOPS_BEGIN = "FETCH_NEARBY_SHOPS_BEGIN";
@@ -23,10 +23,9 @@ export const fetchNearbyShops = token => (dispatch, getState) => {
     dispatch({
         type: FETCH_NEARBY_SHOPS_BEGIN
     })
-    axios({
-        url: ("http://localhost:3010/shops/nearbyShops"),
+    API({
+        url: ("/shops/nearbyShops"),
         method: "GET",
-        // data: payload
         headers: {
             "Authorization": "Bearer " + token
         }
@@ -48,8 +47,8 @@ export const fetchPreferredShops = token => (dispatch, getState) => {
     dispatch({
         type: FETCH_PREFERRED_SHOPS_BEGIN
     })
-    axios({
-        url: ("http://localhost:3010/shops/preferredShops"),
+    API({
+        url: ("/shops/preferredShops"),
         method: "GET",
         headers: {
             "Authorization": "Bearer " + token
@@ -72,8 +71,8 @@ export const likeShop = (shop, token) => async (dispatch, getState) => {
     /*
         Make async call to post data to the api
     */
-    await axios({
-        url: "http://localhost:3010/shops/" + shop._id + "/like",
+    await API({
+        url: "/shops/" + shop._id + "/like",
         method: "POST",
         headers: {
             "Authorization": "Bearer " + token
@@ -94,8 +93,8 @@ export const removeShop = (shop, token) => async (dispatch, getState) => {
     /*
         Make async call to post data to the api
     */
-    await axios({
-        url: "http://localhost:3010/shops/" + shop._id + "/remove",
+    await API({
+        url: "/shops/" + shop._id + "/remove",
         method: "POST",
         headers: {
             "Authorization": "Bearer " + token
@@ -117,8 +116,8 @@ export const dislikeShop = (shop, token) => (dispatch, getState) => {
     /*
         Make async call to post data to the api
     */
-    axios({
-        url: "http://localhost:3010/shops/" + shop._id + "/dislike",
+    API({
+        url: "/shops/" + shop._id + "/dislike",
         method: "POST",
         headers: {
             "Authorization": "Bearer " + token

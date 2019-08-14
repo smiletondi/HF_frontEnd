@@ -1,4 +1,4 @@
-import axios from "axios";
+import API from "../../api";
 // import { his } from "react-router-dom";
 
 export const SIGN_IN_BEGIN = "SIGN_IN_BEGIN";
@@ -14,8 +14,8 @@ export const signIn = (payload, History) => (dispatch, getState) => {
     dispatch({
         type: SIGN_IN_BEGIN
     })
-    axios({
-        url: ("http://localhost:3010/signin"),
+    API({
+        url: ("/signin"),
         method: "POST",
         data: payload
     }).then(({ data }) => {
@@ -42,8 +42,8 @@ export const signOut = payload => (dispatch, getState) => {
 
 export const signUp = (payload, History) => (dispatch, getState) => {
     // API call
-    axios({
-        url: ("http://localhost:3010/signup"),
+    API({
+        url: ("/signup"),
         method: "POST",
         data: payload
     }).then(() => {

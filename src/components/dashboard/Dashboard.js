@@ -13,7 +13,7 @@ function Dashboard() {
                 <li>As a User, I can like a shop, so it can be added to my preferred shops
                     <ul>
                         <li>
-                            Acceptance criteria: liked shops shouldn’t be displayed on the main page
+                            Liked shops are not be displayed on the main page
                         </li>
                     </ul>
                 </li>
