@@ -1,68 +1,87 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## United Remote Coding Challenge Project
 
-## Available Scripts
+An application that lists shops nearby and display the preferred shops list based in user preference, built with React, Redux, Bootstrap, NodeJS and Express.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+* As a User, I can sign up using my email & password
+* As a User, I can sign in using my email & password
+* As a User, I can display the list of shops sorted by distance
+* As a User, I can like a shop, so it can be added to my preferred shops
+    * Acceptance criteria: liked shops are not displayed on the nearby shops page
+* As a User, I can dislike a shop, so it won’t be displayed within “Nearby Shops” list during the next 2 hours
+    * It won't be displayed only in the UI, refreshing the page will bring it back
+* As a User, I can display the list of preferred shops
+* As a User, I can remove a shop from my preferred shops list
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Project Screenshots
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+### Sign Up page
 
-### `npm test`
+![ Sign Up page ](./screenshots/signup.png)
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Sign In page
 
-### `npm run build`
+![ Sign In page ](./screenshots/signin.png)
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Nearby Shops pag
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+![ Nearby Shops page ](./screenshots/nearbyShops.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Preferred Shops Page
 
-### `npm run eject`
+![ Preferred Shops Page ](./screenshots/preferredShops.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Installation 
+To work you need to couple this with [Back-End](https://github.com/smiletondi/HF_backEnd)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Prerequisites
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+You need to [Download & Install Node.js](https://www.guru99.com/download-install-node-js.html).
+Also an active internet connection is required to import CDNs.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+###  Setup Instructions
 
-## Learn More
+Clone down this repository or download it.
+Open up your terminal and type the following commands:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Installation:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+`npm install`  
 
-### Code Splitting
+To Start the Servers:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+`npm start`  
 
-### Analyzing the Bundle Size
+To Visit the App:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+`localhost:3000`  
 
-### Making a Progressive Web App
+## Reflection
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+This was a project built during my application at United Remote. Project goals included using technologies i wanted and familiarizing myself with documentation for new features.  
 
-### Advanced Configuration
+I started the building process by using the `create-react-app` boilerplate, then adding the `Bootstrap` framework to not focus my efforts on `CSS`.  
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+Due to the absence of time constraints, I had to meticulously choose the technologies and test them before implementation in the project.
 
-### Deployment
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+## Built With
 
-### `npm run build` fails to minify
+* [React](https://reactjs.org/)
+* [Redux](https://redux.js.org/)
+* [Bootstrap](https://getbootstrap.com/)
+* [axios](https://github.com/axios/axios)
+* [react-dom](https://reactjs.org/docs/react-dom.html)
+* [react-redux](https://redux.js.org/basics/usage-with-react)
+* [react-router-dom](https://www.npmjs.com/package/react-router-dom)
+* [redux-thunk](https://github.com/reduxjs/redux-thunk)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+## Authors
+
+* **Tondi Ismael** - *Initial work* - [smiletondi](https://github.com/smiletondi)
+
+## Acknowledgments
+
+* [Lorem Picsum](https://picsum.photos/)  The Lorem Ipsum for photos.
