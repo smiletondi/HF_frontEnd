@@ -95,7 +95,7 @@ export const removeShop = (shop, token) => async (dispatch, getState) => {
     */
     await API({
         url: "/shops/" + shop._id + "/remove",
-        method: "POST",
+        method: "DELETE",
         headers: {
             "Authorization": "Bearer " + token
         }
