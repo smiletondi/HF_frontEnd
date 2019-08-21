@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "smiletondi.github.io/HF_frontEnd/static/css/main.f6b7274d.chunk.css",
+    "main.js": "smiletondi.github.io/HF_frontEnd/static/js/main.ed359d3b.chunk.js",
+    "main.js.map": "smiletondi.github.io/HF_frontEnd/static/js/main.ed359d3b.chunk.js.map",
+    "runtime~main.js": "smiletondi.github.io/HF_frontEnd/static/js/runtime~main.e815d38a.js",
+    "runtime~main.js.map": "smiletondi.github.io/HF_frontEnd/static/js/runtime~main.e815d38a.js.map",
+    "static/js/2.c8da893f.chunk.js": "smiletondi.github.io/HF_frontEnd/static/js/2.c8da893f.chunk.js",
+    "static/js/2.c8da893f.chunk.js.map": "smiletondi.github.io/HF_frontEnd/static/js/2.c8da893f.chunk.js.map",
+    "index.html": "smiletondi.github.io/HF_frontEnd/index.html",
+    "precache-manifest.eafca5c9f92d610ec092b43b2b993ab9.js": "smiletondi.github.io/HF_frontEnd/precache-manifest.eafca5c9f92d610ec092b43b2b993ab9.js",
+    "service-worker.js": "smiletondi.github.io/HF_frontEnd/service-worker.js",
+    "static/css/main.f6b7274d.chunk.css.map": "smiletondi.github.io/HF_frontEnd/static/css/main.f6b7274d.chunk.css.map",
+    "static/media/spinner1.gif": "smiletondi.github.io/HF_frontEnd/static/media/spinner1.5e02af51.gif"
+  }
+}
