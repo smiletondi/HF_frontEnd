@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d1f69f71dd6ecd1e2f84cf6e673af55c",
+    "revision": "21ca2f181808e45e07bdb43079014d8e",
     "url": "smiletondi.github.io/HF_frontEnd/index.html"
   },
   {
-    "revision": "17dad2755a8554d11f4c",
+    "revision": "4d8212564675d03b687c",
     "url": "smiletondi.github.io/HF_frontEnd/static/css/main.f6b7274d.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "smiletondi.github.io/HF_frontEnd/static/js/2.c8da893f.chunk.js"
   },
   {
-    "revision": "17dad2755a8554d11f4c",
-    "url": "smiletondi.github.io/HF_frontEnd/static/js/main.ed359d3b.chunk.js"
+    "revision": "4d8212564675d03b687c",
+    "url": "smiletondi.github.io/HF_frontEnd/static/js/main.30cb7aa8.chunk.js"
   },
   {
     "revision": "b654e7e7af806ebca113",

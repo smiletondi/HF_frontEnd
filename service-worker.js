@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "smiletondi.github.io/HF_frontEnd/precache-manifest.eafca5c9f92d610ec092b43b2b993ab9.js"
+  "smiletondi.github.io/HF_frontEnd/precache-manifest.937e9834c59554974dd0b2e2b95a24b0.js"
 );
 
 self.addEventListener('message', (event) => {
