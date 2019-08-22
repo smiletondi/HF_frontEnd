@@ -1,6 +1,6 @@
 ## United Remote Coding Challenge Project
 
-An application that lists shops nearby and display the preferred shops list based in user preference, built with React, Redux, Bootstrap, NodeJS and Express. Try a working [here](https://smiletondi.github.io/HF_frontEnd/)
+An application that lists shops nearby and display the preferred shops list based in user preference, built with React, Redux, Bootstrap, NodeJS and Express. Try a working demo [here](https://smiletondi.github.io/HF_frontEnd/)
 
 ## Features
 
